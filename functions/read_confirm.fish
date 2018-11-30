@@ -1,7 +1,11 @@
 function read_confirm
   while true
-    read -l -P 'Do you want to continue? [y/N] ' confirm
-
+    if [ $argv = '-y' ]
+    	echo 'Do you want to continue [y/N] y '
+		return 0
+	end
+	read -l -P 'Do you want to continue? [y/N] ' confirm
+    
     switch $confirm
       case Y y
         return 0
