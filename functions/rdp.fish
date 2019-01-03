@@ -17,7 +17,7 @@ function rdp
 	if set -q _flag_width;set width $_flag_width;else;set width 1180;end
 	if set -q _flag_exag;set ex_args $_flag_exag;else;set ex_args '';end
 	if set -q connect
-		command xfreerdp /u:agw /p:(zenity --password) /size:1918x1180 /v:$connect $fonts $wallpaper $clipboard
+		command xfreerdp /u:agw /p:(zenity --password) /size:1920x1160 /v:$connect $fonts $wallpaper $clipboard
 	else 
 		echo 'You need to specify what you wanna connect to budd'
 		echo 'But the options where'

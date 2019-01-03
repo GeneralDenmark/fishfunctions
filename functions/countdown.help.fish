@@ -1,7 +1,7 @@
 function countdown.help
 	echo 'Welcome to countdown help'
 	echo ''
-	echo 'Displays time in a human readable fasion. Only supports seconds for now'
+	echo 'Displays a countdown or a time in a human readable fasion.'
 	echo '----------------------------------------------------------------------------------------'
 	echo 'show_time [-h/--help|-s=+|-M=+|-H=+|-D=+|-t|-d]'
 	echo ''
