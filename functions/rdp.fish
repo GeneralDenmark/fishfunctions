@@ -1,3 +1,4 @@
+# Defined in /tmp/fish.8xN6pw/rdp.fish @ line 2
 function rdp
 	set -l options 'h/help' 'c/consignor' 'l/labtop' 'u-user=+' 'w-width=+' 'e-height=+' 'o-nofonts' 'a-wallpaper' 'b-noclipboard' 'x/exag=+'
 	argparse $options -- $argv ^/dev/null;
@@ -8,7 +9,7 @@ function rdp
 	end
 	
 	if set -q _flag_h;rdp.help;return 0;end
-	if set -q _flag_c;set connect 'consignor-v01';else if set -q _flag_l;set connect 'CLE5570-03669';end
+	if set -q _flag_c;set connect 'consignor-v01.ao-vvs.dk';else if set -q _flag_l;set connect 'CLE5570-03669';end
 	if set -q _flag_nofonts;set fonts '-fonts';else;set fonts '+fonts';end
 	if set -q _flag_wallpaper;set wallpaper '+wallpaper';else;set wallpaper '-wallpaper';end
 	if set -q _flag_noclipboard;set clipboard '-clipboard';else;set clipboard '+clipboard';end
@@ -23,4 +24,3 @@ function rdp
 		echo 'But the options where'
 	end
 end
-
