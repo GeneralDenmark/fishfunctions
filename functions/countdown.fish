@@ -4,19 +4,19 @@ function countdown
 	or begin;echo "Some arguments [" $argv "] was not understood" 
 	and countdown.help; and return 1; end
 
-	if set -q _flag_h;countdown.help;and return 0;end
-	if set -q _flag_s;set num $_flag_s;else;set num 0;end
-	if set -q _flag_M;set num (math "$num+$_flag_M*60");end
-	if set -q _flag_H;set num (math "$num+$_flag_H*3600");end
-	if set -q _flag_D;set num (math "$num+$_flag_D*86400");end
+	if test -n "$_flag_h";countdown.help;and return 0;end
+	if test -n "$_flag_s";set num $_flag_s;else;set num 0;end
+	if test -n "$_flag_M";set num (math "$num+$_flag_M*60");end
+	if test -n "$_flag_H";set num (math "$num+$_flag_H*3600");end
+	if test -n "$_flag_D";set num (math "$num+$_flag_D*86400");end
     if [ $num -lt 0 ];set num (math "$num * -1");end
-	if begin set -q _flag_date; or set -q _flag_time; end
-		if set -q _flag_timezone;set timezone $_flag_timezone;else;set timezone (date +%Z);end
-    	if set -q _flag_time;set time $_flag_time;else;set time (date +%T);end 
-		if set -q _flag_date;set date $_flag_date;else;set date (date +%D);end
-		set num (math (date -d $date""$timezone""$time +%s) - (date +%s));end
-	if [ $num -eq 0 ]; and not set -q _flag_s;echo "You must set a time ";and return 1;end
-    if set -q _flag_t
+	if begin test -n "$_flag_date"; or test -n "$_flag_time"; end
+		if test -n "$_flag_timezone";set timezone $_flag_timezone;else;set timezone (date +%Z);end
+    	if test -n "$_flag_time";set time $_flag_time;else;set time (date +%T);end 
+		if test -n "$_flag_date";set date $_flag_date;else;set date (date +%D);end
+		set num (math (date -d $date"$timezone"$time +%s) - (date +%s));end
+	if [ $num -eq 0 ]; and test -z "$_flag_s";echo "You must set a time ";and return 1;end
+    if test -n "$_flag_t"
     	set min 0;set hour 0;set day 0;
 		if [ $num -gt 59 ]
 	    	set sec (math $num%60)
@@ -46,7 +46,7 @@ function countdown
 	    echo $total_time
 	    return 0
 	end
-    if not set -q _flag_d
+    if test -z "$_flag_d"
 	   	while [ $num -ne 0 ]
 			printf "  %s \033[0K\r" (countdown -t -s $num)
 			set num (math $num-1)
