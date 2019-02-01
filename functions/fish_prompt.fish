@@ -1,5 +1,6 @@
+# Defined in /tmp/fish.ZoPZt2/fish_prompt.fish @ line 2
 function fish_prompt
-  # Cache exit status
+	# Cache exit status
   set -l last_status $status
 
   # Just calculate these once, to save a few cycles when displaying the prompt
@@ -14,7 +15,11 @@ function fish_prompt
         set -g __fish_prompt_char \$
     end
   end
-
+  if set -q VIRTUAL_ENV
+    set -g __vir_env (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
+  else   
+    set -g __vir_env ''
+  end
   # Setup colors
   set -l normal (set_color normal)
   set -l cyan (set_color cyan)
@@ -38,7 +43,7 @@ function fish_prompt
   set fish_prompt_pwd_dir_length 0
   set -l prompt_columns (printf '%s%s at %s in %s%s' $CONDA_PROMPT_MODIFIER $USER $__fish_prompt_hostname (prompt_pwd) (__fish_git_prompt) | wc -c)
   if test $prompt_columns -lt $COLUMNS
-    echo -n $cyan$USER$normal at $yellow$__fish_prompt_hostname$normal in $bred(prompt_pwd)$normal
+    echo -n $cyan$USER$normal at $yellow$__fish_prompt_hostname$normal in $bred(prompt_pwd)$normal $__vir_env
     set -g __fish_git_prompt_showcolorhints true
     __fish_git_prompt
     echo
@@ -46,7 +51,7 @@ function fish_prompt
     set fish_prompt_pwd_dir_length 1
     set -l prompt_columns (printf '%s%s at %s in %s%s' $CONDA_PROMPT_MODIFIER $USER $__fish_prompt_hostname (prompt_pwd) (__fish_git_prompt) | wc -c)
     if test $prompt_columns -lt $COLUMNS
-      echo -n $cyan$USER$normal at $yellow$__fish_prompt_hostname$normal in $bred(prompt_pwd)$normal
+      echo -n $cyan$USER$normal at $yellow$__fish_prompt_hostname$normal in $bred(prompt_pwd)$normal $__vir_env
       set -g __fish_git_prompt_showcolorhints true
       __fish_git_prompt
       echo
