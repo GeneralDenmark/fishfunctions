@@ -42,6 +42,6 @@ function update_flex_and_shop
 		bash -c "fish -c '""make -C $devenv flex-reset-db""'; echo 'flex-done' &"
 	end
 
-	wait
+	await
 	echo "Update completed"
 end

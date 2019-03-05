@@ -20,6 +20,7 @@ function git_clip_editor
 	set no_space (string replace -a " " "_" -- (xclip -o))
 	set no_special (string replace -a -r "(\[|\]|\(|\)|\^|\?|\+|\!|\\|\~|\:|\;|\.|\,|\||\*|\'|\"|\{|\}|\<|\>|\/|\¤|\%|\@|\'|\`|\£|\$|\½|\¾|\§|\n)" "" -- $no_space)
 	set finished (string lower -- (string replace -a "å" "aa" -- (string replace -a "æ" "ae" -- (string replace -a "ø" "oe" -- $no_special))))
+	echo $finished
 	echo $finished | xclip 
 	echo $finished | xclip -selection clipboard
 end
