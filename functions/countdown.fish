@@ -14,6 +14,7 @@ function countdown
 		if test -n "$_flag_timezone";set timezone $_flag_timezone;else;set timezone (date +%Z);end
     	if test -n "$_flag_time";set time $_flag_time;else;set time (date +%T);end 
 		if test -n "$_flag_date";set date $_flag_date;else;set date (date +%D);end
+		printf 'Countdown to: %s the %s\n\n' $date $time
 		set num (math (date -d $date"$timezone"$time +%s) - (date +%s))
 	end
 

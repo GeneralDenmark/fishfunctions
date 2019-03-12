@@ -1,1 +1,1 @@
-/home/agw/.local/share/omf/themes/spacefish/fish_prompt.fish
+/home/agw/.local/share/omf/themes/cbjohnson/fish_prompt.fish
