@@ -20,15 +20,15 @@ function rm_from_jobbed
 
 	cp -f ~/.jobber ~/logz/jobber/backup/jobber.bak
 
-	### Edit backup ###
-	set regex ". name: (\w*\s*\n*)id: "$identifier".*?\n\s*cmd: .*?\n\s*time:.*?\n\s*onError: \w*\n\s*notifyOnError: \w*\n\s*notifyOnFailure: \w*\n\s*notifyOnSucess: \w*"
-	
-	set jobbed (cat ~/.jobber)"
-	echo $jobbed
-
-
-	echo $regex
+	### Run the pythonscript ###
 	if $dryrun
-		echo ""(string replace -r (string escape --style=regex $regex) "" -- (cat ~/logz/jobber/backup/jobber.bak))"" > ~/logz/jobber/backup/dryrun.test
-	end	
+		set output ~/logz/jobber/backup/dryrun.test
+	else
+		set output ~/.jobber
+	end
+	python ./rmerjobber.py -i ~/logz/jobber/backup/jobber.bak -o $output -d $identifier
+	if $dryrun
+		cat ~/logz/jobber/backup/dryrun.test
+		rm ~/logz/jobber/backup/dryrun.test
+	end
 end

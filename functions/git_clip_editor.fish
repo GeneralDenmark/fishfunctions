@@ -1,4 +1,4 @@
-# Defined in /tmp/fish.ODtI1a/git_clip_editor.fish @ line 2
+# Defined in /tmp/fish.gwo7zq/git_clip_editor.fish @ line 2
 function git_clip_editor
 	set stb (xclip -o)
 	set sta (xclip -selection clipboard -o)
@@ -19,8 +19,8 @@ function git_clip_editor
 	end
 	set no_space (string replace -a " " "_" -- (xclip -o))
 	set no_special (string replace -a -r "(\[|\]|\(|\)|\^|\?|\+|\!|\\|\~|\:|\;|\.|\,|\||\*|\'|\"|\{|\}|\<|\>|\/|\¤|\%|\@|\'|\`|\£|\$|\½|\¾|\§|\n)" "" -- $no_space)
-	set finished (string lower -- (string replace -a "å" "aa" -- (string replace -a "æ" "ae" -- (string replace -a "ø" "oe" -- $no_special))))
-	echo $finished
-	echo $finished | xclip 
+    set finished (echo $finished | iconv -f utf8 -t ascii//TRANSLIT)
+    echo $finished
+    echo $finished | xclip 
 	echo $finished | xclip -selection clipboard
 end

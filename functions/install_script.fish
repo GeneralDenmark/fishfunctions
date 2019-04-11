@@ -1,5 +1,5 @@
 function install_script --description "This requires fish3 to be installed and is a collection of all of AGW's dependensies"
-	#### GLOBAL VARIABLES ####
+	#### GLOBALOCAL VARIABLES ####
 	set -l vers "v0.1"
 	set -l desc "General purpose installation file, for installing installers installation"
 	set -l help "\nWelcome to the general purpose installer for installing installations of installeres\nhere I will tell you a bit about how to use this pice of software.\n              ----------------MAIN------------------\n     -h/--help                  - Will show you this message and exit\n     -a/--author                - Will show you the author of this thingymagic\n     -v/--version               - Will show you the version of this installer\n     -y/--yes-all               - Will install everything, without prompting you for accept.. Stranger Danger!\n\nIf you can use this. Please consider buying me a coffe at some point.\n\nI live in Denmark, good luck finding me\n\nAuthor AGW"
@@ -26,7 +26,7 @@ function install_script --description "This requires fish3 to be installed and i
 		end
 	end
 	
-	# opts handler #
+	### opts handler ###
 	if test -z non_understood
 		echo -e "The following arguments are undefined:\n" $non_understood
 		return 1
@@ -44,7 +44,7 @@ function install_script --description "This requires fish3 to be installed and i
 		return 0
 	end
 	
-
+	set -l requirements https://gist.github.com/GeneralDenmark/bbb147cd493d183ef23af21c5b94fadf
 	#### START SCRIPT ####
 	set start_loc $PWD
 	echo "Welcome to the installations script. There will be a few dialog options along the way"
@@ -53,8 +53,8 @@ function install_script --description "This requires fish3 to be installed and i
 	echo ""
 	mkdir -p ~/.agw_installer/
 	cd ~/.agw_installer
-	cd $start_loc
 
+	
 
 end
 

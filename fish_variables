@@ -1,8 +1,10 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export AGW_SLOW_MOUSE:true
 SETUVAR __fish_classic_git_prompt_initialized:\x1d
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
+SETUVAR __fish_init_3_x:\x1d
 SETUVAR __tf_func:\x1d
 SETUVAR __tf_vers:Could\x20not\x20find\x20platform\x20independent\x20libraries\x20\x3cprefix\x3e\x1eCould\x20not\x20find\x20platform\x20dependent\x20libraries\x20\x3cexec_prefix\x3e\x1eConsider\x20setting\x20\x24PYTHONHOME\x20to\x20\x3cprefix\x3e\x5b\x3a\x3cexec_prefix\x3e\x5d\x1eFatal\x20Python\x20error\x3a\x20Py_Initialize\x3a\x20Unable\x20to\x20get\x20the\x20locale\x20encoding\x1eModuleNotFoundError\x3a\x20No\x20module\x20named\x20\x27encodings\x27\x1e\x1eCurrent\x20thread\x200x00007f1fe2caf440\x20\x28most\x20recent\x20call\x20first\x29\x3a
 SETUVAR fish_color_autosuggestion:FFC473
